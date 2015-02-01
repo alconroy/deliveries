@@ -1,0 +1,26 @@
+tr.problem-row td
+{
+  color: red;
+  font-weight: bold;
+}
+
+#customer-deliveries {
+  font-size: 16px;
+  div {
+    height: 40px;
+    line-height: 40px;
+  }
+  .table-head {
+    font-weight: bold;
+  }
+  .odd div {
+    background-color: #F5F5F5;
+  }
+  .even div {
+    background-color: white;
+  }
+  .page-head {
+    background-color: #F5F5F5;
+    margin-bottom: 0px;
+  }
+}

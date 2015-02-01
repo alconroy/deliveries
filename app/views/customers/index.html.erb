@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="small-12 small-centered columns">
+
+<h3 class="form-title">Customers</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Postcode</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customers.each do |customer| %>
+      <% if customer.latitude == 0 %>
+        <tr class="problem-row">
+      <% else %>
+        <tr>
+      <% end %>
+          <td><%= link_to customer.name, customer_path(customer) %></td>
+          <td><%= customer.address %></td>
+          <td><%= customer.postcode %></td>
+          <td><%= link_to 'Edit', edit_customer_path(customer), class: "button tiny" %></td>
+          <td><%= link_to 'Delete', customer, method: :delete,
+            data: { confirm: 'Are you sure?' }, class: "button tiny alert" %></td>
+        </tr>      
+    <% end %>
+  </tbody>
+</table>
+
+</div>
+</div>
+

@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="small-12 large-5 small-centered columns">
+
+    <h3 class="form-title">Create New User</h3>
+
+    <%= form_for(@user) do |f| %>
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+          <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= f.label :email %><br>
+        <%= f.email_field :email, autofocus: true %>
+      </div>
+      <div class="field">
+        <%= f.label :password %><br>
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+      <div class="field">
+        <%= f.label :password_confirmation %><br>
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      </div>
+
+      <div class="field switch">
+        <span class="switch-label">Admin</span>
+        <%= f.check_box :admin %>
+        <%= f.label :admin %>
+      </div>
+
+      <div class="field">
+        <%= f.label :van %><br>
+        <%= f.number_field :van %>
+      </div>
+
+      <div class="row">
+        <div class="small-12 columns actions">
+          <%= f.submit "Create", class: "button expand large" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

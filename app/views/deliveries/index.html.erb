@@ -1,0 +1,17 @@
+<div id="deliveries-main" class="row">
+  <div class="small-12 large-10 small-centered columns">
+
+    <div class="row page-head">
+      <div class="small-7 columns">
+        <h2>Deliveries</h2>
+      </div>
+    </div>
+
+    <% if current_user.admin %>
+      <%= render "layouts/deliveries_admin" %>
+    <% else %>
+      <%= render "layouts/deliveries" %>
+    <% end %>
+
+  </div>
+</div>

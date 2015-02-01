@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="small-12 large-10 small-centered columns">
+  	<div class="users-panel">
+
+  		<div class="row page-head">
+  			<div class="small-7 columns">
+  				<h2>Users</h2>
+  			</div>
+  			<div class="small-5 columns text-right">
+  				<%= link_to 'New User', new_user_path, class: "button tiny" %>
+  			</div>
+  		</div>
+
+  		<!-- table header -->
+  		<div class="row table-head">
+	  		<div class="small-5 large-3 columns">Email</div>
+	  		<div class="small-5 large-3 columns">Last Sign In</div>
+	  		<div class="small-2 large-2 columns end">Admin</div>
+	  	</div>
+
+  		<% @users.each do |user| %>
+  		<div class="row <%= cycle('odd', 'even') -%>">
+		  		<div class="small-5 large-3 columns">
+		  			<%= user.email %>
+		  		</div>
+		  		<div class="small-5 large-3 columns">
+		  			<% if user.last_sign_in_at.nil? %>
+		  				 <%= "Never" %>
+		  			<% else %>
+		  				<%= user.last_sign_in_at.strftime("%m-%d-%Y %H:%M") %>
+		  			<% end %>
+		  		</div>
+		  		<div class="small-2 large-2 columns">
+		  			<%= user.admin ? 'Yes' : 'No' %>
+		  		</div>
+		  		<div class="small-6 large-2 columns">
+		  			<%= link_to 'Edit', edit_user_path(user), class: "button small expand" %>
+		  		</div>
+		  		<div class="small-6 large-2 columns">
+            <%# Shouldn't be ale to delete yourself %>
+            <% if current_user != user %>
+		  			 <%= link_to 'Delete', user, method: :delete,
+								data: { confirm: 'Are you sure?' }, class: "button small alert expand" %>
+            <% else %>
+              <a class="button small alert expand disabled" href='#'>Delete</a>
+            <% end %>
+		  		</div>
+		  	</div>
+		  	<% end %>
+  	</div>
+  </div>
+</div>

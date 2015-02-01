@@ -1,0 +1,39 @@
+<dl class="accordion" data-accordion>
+  <% @deliveries.keys.each do |u| %>
+    <dd class="accordion-navigation">
+    <a class="acc-head" href="#panel<%= u.id %>"><%= u.email %></a>
+    <div id="panel<%= u.id %>" class="content active">
+      <table class="delivery-list">
+      <colgroup>
+        <col span="1" style="width: 40%;">
+        <col span="1" style="width: 40%;">
+        <col span="1" style="width: 40%;">
+      </colgroup>
+      <thead>
+        <th>Customer</th><th>Status</th><th>Travel Time</th>
+      </thead>
+      <% @deliveries[u].each do |d| %>
+        <tr>
+        <td><%= link_to d.customer.name, customer_path(d.customer) %></td>
+        <% if d.complete.nil? %>
+          <% if d.precedence.nil? || d.precedence <= 0 %>
+            <td>NA</td>
+            <td>Pending</td>
+          <% elsif d.precedence == 1 %>
+            <td>On Route</td>  
+            <td><%= distance_of_time_in_words(0, d.travel_time) %></td>                    
+          <% else %>
+            <td>Drop #<%= d.precedence %></td>
+            <td><%= distance_of_time_in_words(0, d.travel_time) %></td>            
+          <% end %>
+        <% else %>
+          <td>Completed @ <%= d.complete.strftime('%H:%M') %></td>
+          <td>&nbsp;</td>
+        <% end %>
+        </tr>
+      <% end %>
+      </table>
+    </div>
+    </dd>
+<% end %>
+</dl>

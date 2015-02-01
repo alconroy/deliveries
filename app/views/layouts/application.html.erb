@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= @title || Rails.application.config.deliveries[:company_name] %></title>
+
+    <%= stylesheet_link_tag "application", media: 'all' %>
+    <%# Foundation needs modernizr %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%# Bing Maps JavaScript API - need "s=1" param on url so uses SSL on Heroku %>
+    <%= javascript_include_tag "https://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0&s=1" %>
+    <%= javascript_include_tag "application" %>
+
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+
+    <%# render the correct navbar for the user %>
+
+    <% if user_signed_in? %>
+      <% if current_user.admin %>
+        <%= render partial: "layouts/navbar", locals: { nav_users: @nav_users } %>
+      <% else %>
+        <%= render "layouts/navmobile" %>
+      <% end %>
+    <% end %>
+
+    <%= render "layouts/messages" %>
+    <%= render "layouts/loading" %>
+
+    <%= yield %>
+
+  </body>
+</html>

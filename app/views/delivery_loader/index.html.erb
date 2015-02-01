@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="small-12 large-5 small-centered columns">
+
+    <h3 class="form-title">Upload Delivery CSV</h3>
+
+    <p class="upload-text">Pick the file to upload below, then press upload.</p>
+    <p class="upload-text-bold">Uploading a new file will cause any scheduled 
+      deliveries to be deleted.</p>
+
+    <% if @todays_deliveries > 0 %>
+      <div class="upload-warning">Found
+        <%= pluralize(@todays_deliveries, 'delivery') %> already scheduled for today.
+      </div>
+    <% end %>
+
+    <%= form_tag({action: :upload}, multipart: true) do %>
+      <%= file_field_tag 'upload_file', class: "file-upload", accept: ".csv" %>
+      <div class="row">
+        <div class="small-8 columns small-centered">
+          <%= submit_tag "Upload", class: "button expand", id: "upload-btn" %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</div>

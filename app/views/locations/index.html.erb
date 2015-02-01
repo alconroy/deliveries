@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="small-12 small-centered columns">
+
+<h3>Locations</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Time</th>
+      <th>Lat</th>
+      <th>Long</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @locations.each do |location| %>
+      <tr>
+        <td><%= location.user.email.split('@')[0] %></td>
+        <td><%= location.time %></td>
+        <td><%= location.latitude %></td>
+        <td><%= location.longitude %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>
+</div>

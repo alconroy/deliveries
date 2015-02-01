@@ -1,0 +1,44 @@
+<div id="customer-deliveries" class="row">
+  <div class="small-12 large-10 small-centered columns">
+
+    <div class="row page-head">
+      <div class="small-7 columns">
+        <h3><%= @customer.name %></h3>
+      </div>
+    </div>
+
+    <div id="customer-details">
+      <%= @customer.address %> <%= @customer.postcode %>
+    </div>
+
+    <!-- table header -->
+    <div class="row table-head">
+      <div class="small-3 columns">Scheduled</div>
+      <div class="small-6 columns">Driver</div>
+      <div class="small-3 columns end">Delivered</div>
+    </div>
+
+    <div id="delivery-list">
+    <% @deliveries.each do |d| %>
+      <div class="row <%= cycle('odd', 'even') -%>">
+        <div class="small-3 columns">
+          <%= d.date.strftime("%d-%m-%Y") %>
+        </div>
+        <div class="small-6 columns">
+          <%= d.user.email %>
+        </div>
+        <div class="small-3 columns">
+          <% if d.complete.nil? %>
+            Pending
+          <% else %>
+            <%= d.complete.strftime("%d/%m %H:%M") %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    </div>
+
+  </div>
+</div>
+
+

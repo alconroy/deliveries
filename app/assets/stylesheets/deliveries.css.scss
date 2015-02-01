@@ -1,0 +1,55 @@
+// Place all the styles related to the locations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+div.delivery {
+  div.row {
+    height: 32px;
+    line-height: 32px;
+  }
+  .odd {
+    background-color: #F5F5F5;
+  }
+  .even {
+    background-color: white;
+  }
+  padding: 0 8px 0 8px;
+  margin: 0 0 0 0;
+}
+
+div.cell-head {
+  color: black;
+  border: 1px solid #F5F5F5;
+  background-color: #F5F5F5;
+  height: 46px;
+  line-height: 46px;
+  padding-left: 6px;
+  font-weight: bold;
+}
+
+div.complete {
+  height: 20px;
+  line-height: 20px;
+  text-align: right;
+}
+
+.attrib-name {
+  font-weight: bold;
+  background-color: #F5F5F5;
+}
+
+span.complete-time {
+  line-height: 46px;
+}
+
+table.delivery-list {
+  border: 0;
+  width: 100%;
+}
+
+a.acc-head {
+  font-size: 110%;
+  span {
+    margin-left: 20px;
+  }
+}

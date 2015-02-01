@@ -1,0 +1,18 @@
+<%# common map data JS needs to access %>
+<div id="js-vars"
+  data-key="<%= Rails.application.config.deliveries[:bing_maps_key] %>"  
+  <% if current_user.admin? %>
+    data-admin="true"
+  <% else %>
+    <%# don't use "false" here, will evaluate to true as non empty string %>
+    data-admin=""
+    data-uid="<%= current_user.id %>"
+  <% end %>
+  data-home="<%= Rails.application.config.deliveries[:home_location] %>"
+  data-view-all="<%= @view_all %>">
+</div>
+<div>    
+    <div id="map-container" class="map-view">
+      <div id="map-title">Current Van Locations</div>
+    </div>
+</div>

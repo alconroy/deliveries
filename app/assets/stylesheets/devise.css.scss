@@ -1,0 +1,20 @@
+.signin-panel {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-top: 30px;
+  h2, h3 {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  i {
+    font-size: 30px;
+    line-height: 50px;
+    color: #999;
+  }
+  form {
+    input:not([type=submit]), span {
+      height: 50px;
+    }
+  }
+}

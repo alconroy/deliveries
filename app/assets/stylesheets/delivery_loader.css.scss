@@ -1,0 +1,32 @@
+// Place all the styles related to the DeliveryLoader controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+input.file-upload {
+  border: 1px solid #4D4D4D;
+  background-color: #F4F4F4;
+  border-radius: 2px;
+  margin-top: 10px;
+  margin-bottom: 16px;
+  padding: 15px 10px 15px 10px;
+}
+
+div.upload-warning {
+  background-color: red;
+  color: white;
+  margin: 0 0 8px 0;
+  padding: 5px;
+  text-align: center;
+}
+
+p.upload-text {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+p.upload-text-bold {
+  @extend p.upload-text;
+  font-weight: 800;
+  margin-bottom: 8px;
+}

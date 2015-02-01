@@ -1,0 +1,62 @@
+ <% @deliveries.each do |delivery| %>
+      <div class="row">
+        <div class="cell-head">
+          <%# Alter content depending on the status of the delivery %>
+          <div class="small-4 columns">
+            <%# if delivery is complete show time %>
+            <% if !delivery.complete.nil? %>
+               <%= delivery.complete.strftime("%H:%M") %>
+            <%# otherwise show precedence is known %>
+            <% elsif !delivery.precedence.nil? %>
+              <%= delivery.precedence %>
+            <% end %> 
+          </div>
+
+          <div class="small-8 columns complete">
+            <% if !current_user.admin %>
+              <%# Hide this form from admin user %>
+              <% if delivery.complete.nil? %>
+                <%#= link_to 'Done', edit_delivery_path(delivery), class: 'button small' %>
+                <%= form_for delivery do |f| %>
+                  <%= f.hidden_field(:user_id) %>
+                  <%= f.hidden_field(:customer_id) %>
+                  <%= f.hidden_field(:date) %>
+                  <%= f.hidden_field(:complete, value: Time.now) %>
+                  <%= f.submit "Done", class: 'button small' %>
+                <% end %>
+              <% else %>
+                <!-- Undo form -->
+                <%= form_for delivery do |f| %>
+                  <%= f.hidden_field(:user_id) %>
+                  <%= f.hidden_field(:customer_id) %>
+                  <%= f.hidden_field(:date) %>
+                  <%= f.hidden_field(:complete, value: nil) %>
+                  <%= f.submit "Undo", class: 'button alert small' %>
+                <% end %>
+                <!-- <span class="complete-time">
+                  <%#= delivery.complete.strftime("%H:%M") %>
+                </span> -->
+              <% end %>            
+            <% end %>
+          </div>
+
+        </div>
+      </div>
+      <div class="delivery">
+        <h4><%= delivery.customer.name %></h4>
+        <p><%= delivery.customer.address %></p>
+        <p><strong>Travel Time:</strong>
+          <% if delivery.travel_time.nil? %>
+            <%= "NA" %>
+          <% else %>
+            <%= distance_of_time_in_words(0, delivery.travel_time) %>
+          <% end %>
+        </p>
+        <% if current_user.admin? %>
+          <p><strong>Assigned To:</strong>
+            Van <%= delivery.user.van %>
+             (<%= delivery.user.email %>)
+          </p>
+        <% end %>
+      </div>
+    <% end %>

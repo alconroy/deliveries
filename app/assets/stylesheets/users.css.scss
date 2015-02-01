@@ -1,0 +1,41 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.users-panel {
+	font-size: 16px;
+	div {
+		height: 54px;
+		line-height: 54px;
+	}
+	.table-head {
+		font-weight: bold;
+	}
+	.odd div {
+		background-color: #F5F5F5;
+	}
+	.even div {
+		background-color: white;
+	}
+	.page-head {
+		background-color: #F5F5F5;
+		margin-bottom: 15px;
+	}
+}
+
+// Style label for foundation switch (not sure real label goes)
+span.switch-label {
+	font-size: 0.875rem;
+	color: #4d4d4d;
+	display: block;
+	font-weight: normal;
+	line-height: 1.5;
+	margin-bottom: 6px;
+}
+
+// Title for forms etc.
+h3.form-title {
+	margin-top: 8px;
+	margin-bottom: 16px;
+	border-bottom: 1px solid #4d4d4d;
+}

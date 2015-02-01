@@ -1,0 +1,38 @@
+<nav class="top-bar" data-topbar data-options="is_hover: false">
+
+	<ul class="title-area">
+		<!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+		<li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+	</ul>
+
+	<section class="top-bar-section">
+		<!-- Left Nav Section -->
+    <ul class="left">
+      <li class="has-dropdown">
+      	<a href="#">Map</a>
+        <ul class="dropdown" id="nav-user-list">
+          <li><a href="#" id="user-all">All</a></li>
+          <%# get the user list and make menu %>
+          <% nav_users.each do |u| %>
+            <li><a href="#" id="user-<%= u.id %>" 
+                data-user-id="<%= u.id %>"  
+                data-van-id="<%= u.van %>">Van <%= u.van %></a></li>
+          <% end %>
+        </ul>
+      </li>
+      <li><%= link_to 'Deliveries', deliveries_path %></li>
+      <li><%= link_to 'Customers', customers_path %></li>
+      <li><%= link_to 'Upload', upload_path %></li>
+    </ul>
+		<!-- Right Nav Section -->
+    <ul class="right">
+      <li class="has-dropdown">
+        <a href="#">Admin</a>
+        <ul class="dropdown">
+          <li><%= link_to 'Manage Users', users_path %></li>
+          <li><%= link_to('Sign Out', destroy_user_session_path, :method => :delete) %></li>
+        </ul>
+      </li>
+    </ul>
+	</section>
+</nav>

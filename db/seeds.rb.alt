@@ -1,0 +1,66 @@
+# alternative database seed, slightly more complicated with deliveries in UK
+# when using this change home_location in config/application.rb to the UK location
+
+users = [
+  User.find_or_create_by(email: "admin@example.com") do |user|
+    user.password = "abc123"
+    user.password_confirmation = "abc123"
+    user.admin = true
+  end,
+  User.find_or_create_by(email: "normal@example.com") do |user|
+    user.password = "abc123"
+    user.password_confirmation = "abc123"
+    user.van = 1
+  end,
+  User.find_or_create_by(email: "other@example.com") do |user|
+    user.password = "abc123"
+    user.password_confirmation = "abc123"
+    user.van = 2
+  end
+]
+
+customers = [
+Customer.find_or_create_by(code: "EMSER", name: "Demolition Services Ltd",
+  address: "DSL House,Wortley Moor Road,Leeds",
+  postcode: "LS12 4JE", latitude: 53.793, longitude: -1.599),
+Customer.find_or_create_by(code: "DEWSBUXX", name: "Dewsbury Dyeing Co. Ltd",
+  address: "Oaklands Mill,Netherfield Road,Ravensthorpe,Dewsbury",
+  postcode: "WF13 3JY", latitude: 53.678, longitude: -1.662),
+Customer.find_or_create_by(code: "ECLIPS", name: "Eclipse Interiors Limited",
+  address: "The Undercroft,1B Old Souls Mill,Old Souls Mill,Bingley",
+  postcode: "BD16 2AN", latitude: 53.862, longitude: -1.844),
+Customer.find_or_create_by(code: "GARDIN", name: "Gardinia Windows (Kirklees),Limited",
+  address: "Gardina House,Leeds Road,Huddersfield",
+  postcode: "HD1 6DD", latitude: 53.653, longitude: -1.776),
+Customer.find_or_create_by(code: "HAWORT", name: "Haworth Scouring Company",
+  address: "Cashmere Works,Birkslamd Street,Bradford,West Yorkshire",
+  postcode: "BD3 9SX", latitude: 53.791, longitude: -1.730)
+]
+
+deliveries = [
+Delivery.find_or_create_by(user_id: users[1].id, customer_id: customers[0].id,
+  date: Time.now),
+Delivery.find_or_create_by(user_id: users[1].id, customer_id: customers[1].id,
+  date: Time.now),
+Delivery.find_or_create_by(user_id: users[2].id, customer_id: customers[2].id,
+  date: Time.now),
+Delivery.find_or_create_by(user_id: users[2].id, customer_id: customers[3].id,
+  date: Time.now),
+Delivery.find_or_create_by(user_id: users[2].id, customer_id: customers[4].id,
+  date: 2.days.ago)
+]
+
+locations = [
+Location.find_or_create_by(user_id: users[1].id, time: 5.minutes.ago) do |loc|
+  loc.latitude = 53.788199
+  loc.longitude = -1.508824
+end,
+Location.find_or_create_by(user_id: users[2].id, time: 4.minutes.ago) do |loc|
+  loc.latitude = 53.790582
+  loc.longitude = -1.526891
+end,
+Location.find_or_create_by(user_id: users[1].id, time: 2.minutes.ago) do |loc|
+  loc.latitude = 53.797655
+  loc.longitude = -1.534916
+end
+]
