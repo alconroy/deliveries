@@ -8,7 +8,9 @@
 
 ### Postgres Setup
 - If necessary change db names in *config/database.yml*
-- Run `rake db:create` and `rake db:migrate` and `rake db:seed` (for some default data), to setup DB.
+- Run `rake db:create` and `rake db:migrate` and `rake db:seed` (for some default data), to setup DB
+- To reset the database on Heroku use `heroku pg:reset <DATABASE>`, get the database name from `heroku pg:info`
+	- then recreate database with `heroku run db:migrate` and seed with data `heroku run db:seed`
 
 ### Server Setup
 - Unicorn uses the `Procfile` to configure the server.
