@@ -146,7 +146,7 @@ delivery.api = (function() {
    */
   var calculateLeg = function(start, finish) {
     var optimize = 'distance';
-    var url = 'http://dev.virtualearth.net/REST/v1/Routes/Driving?wp.0=' +
+    var url = 'https://dev.virtualearth.net/REST/v1/Routes/Driving?wp.0=' +
       start + '&wp.1=' + finish + '&optimize=' + optimize + '&key=' +
       delivery.map.getApiKey() + '&jsonp=?';
     $.getJSON(url, function(data) {
