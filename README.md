@@ -173,6 +173,7 @@ sudo chmod 0600 /swapfile > /dev/null
 
 - **routes messed up:** If routes seem to be messed up, try recalculating manually with the recalc button in mobile view.
 - **customer records invalid:** customer sometimes show up as having invalid records even though the postcode is correct, edit>update can solve this
+- **heroku deploy failed:** due to Devise secret key error, ensure `.gitignore` file is allowing `config/secrets.yml` to be committed. It can be re-ignored after heroku deploy.
 
 [//]: # "-----Link References-----"
 [foundation]: http://foundation.zurb.com/
