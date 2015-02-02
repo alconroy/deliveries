@@ -68,7 +68,7 @@ application. The name of the company can be set here and is reflected in various
 - the `lib` folder also contains two important ruby files.
   - **post_code_finder.rb** this is used by the application to reconcile a postcode with a geographic postion.
   - **route_calculator.rb** calculates the delivery routing for the application.
-    - there is an option in this file to choose the method of route optimization (distance, traffic, trafficWithTime).
+    - there is an option in this file to choose the method of route optimization (distance, traffic, trafficWithTime). This also has to be changed in `app/assets/javascripts/delivery.api.js` in the `calculateLeg` function.
 - Some tests are available in the `spec` folder. They use RSpec but are not complete, just covering some of the main rails implementation. JavaScript test using Jasmine are likewise incomplete.
 - the `vendor/assets/javascripts/moment.min.js` is used in for some date formatting.
 - Heroku uses the `Procfile` to run the web server, it is configured for unicorn.

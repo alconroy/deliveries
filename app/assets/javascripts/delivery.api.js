@@ -45,7 +45,7 @@ delivery.api = (function() {
           highest.p = val.precedence;
           highest.lat = val.customer.latitude;
           highest.lon = val.customer.longitude;
-        }      
+        }
       });
       // if highest is valid, continue with displaying deliveries
       if (highest.p != null) {
@@ -94,10 +94,10 @@ delivery.api = (function() {
           pintext = value.precedence.toString();
         }
         delivery.map.addMarker(
-          value.customer.latitude, 
+          value.customer.latitude,
           value.customer.longitude,
-          pintext, 
-          value.customer.name, 
+          pintext,
+          value.customer.name,
           value.customer.address
         );
       }
@@ -145,8 +145,9 @@ delivery.api = (function() {
    * Do a caculation for point to point route, for map display only.
    */
   var calculateLeg = function(start, finish) {
+    var optimize = 'distance';
     var url = 'http://dev.virtualearth.net/REST/v1/Routes/Driving?wp.0=' +
-      start + '&wp.1=' + finish + '&routePathOutput=Points&key=' +
+      start + '&wp.1=' + finish + '&optimize=' + optimize + '&key=' +
       delivery.map.getApiKey() + '&jsonp=?';
     $.getJSON(url, function(data) {
       // route leg was found
@@ -204,10 +205,10 @@ delivery.api = (function() {
         //console.log(val.user_id + " @ " + val.latitude + ", " + val.longitude);
         var time_formatted = moment(val.time).format("h:mm:ss MMMM Do YYYY");
         delivery.map.addMarker(
-          val.latitude, 
+          val.latitude,
           val.longitude,
-          val.user.van.toString(), 
-          val.user.email, 
+          val.user.van.toString(),
+          val.user.email,
           time_formatted
         );
         locationPoints.push(new Microsoft.Maps.Location(val.latitude, val.longitude));
