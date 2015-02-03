@@ -5,6 +5,8 @@ ruby "2.1.2"
 gem 'rails', '4.1.4'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.17.1'
+# For SQLite instead
+#gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
